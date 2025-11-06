@@ -162,8 +162,9 @@ for epoch in range(epochs):
 ```
 ##
 ## 3.Experimental Reaults and Analysis
-######
-###### result :
+##### After training,the model achieves an accuracy of over 90% and a loss of around 0.34 on the MNIST test set,proving that a simple MLP can effectively learn handwritten digit features with stable classification performance.
+###### 训练后模型在 MNIST 测试集上准确率达 90% 以上，损失降至 0.34 左右，证明简单 MLP 能有效学习手写数字特征，分类性能稳定。
+##### The final testing results(loss and accuracy) are as follows :
 ###### epoch:0,loss:1.4814,acc:0.7388
 ###### epoch:1,loss:0.8339,acc:0.8310
 ###### epoch:2,loss:0.6112,acc:0.8624
@@ -175,3 +176,4 @@ for epoch in range(epochs):
 ###### epoch:8,loss:0.3555,acc:0.9030
 ###### epoch:9,loss:0.3443,acc:0.9052
 ##
+## 4.Experimental Summary
