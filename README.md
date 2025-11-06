@@ -102,7 +102,11 @@ model = mlp().to(device)   #创建模型实例并指定计算设备
 optimizer = optim.SGD(model.parameters(),lr=0.1)
 model
 ```
-###### result : mlp( (l1): Linear(in_features=784, out_features=128, bias=True)  (l2): Linear(in_features=128, out_features=10, bias=True) )
+###### result : 
+###### mlp(
+###### (l1): Linear(in_features=784, out_features=128, bias=True)  
+###### (l2): Linear(in_features=128, out_features=10, bias=True) 
+###### )
 > 代码中的一些参数解释：
 
 > SGD 是「随机梯度下降（Stochastic Gradient Descent）」的缩写
