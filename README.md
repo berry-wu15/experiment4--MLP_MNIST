@@ -24,7 +24,8 @@ import matplotlib.pyplot as plt
 from torchvision import datasets,transforms
 ```
 ##
-###### 
+###### Set the batch size and CPU computing device,define data loaders for the training and test sets,automatically download/read the MNIST dataset and convert its format via ToTensor(),configure batch size and shuffling parameters.
+###### 设置批次大小与 CPU 计算设备，定义训练集和测试集的数据加载器，自动下载 / 读取 MNIST 数据集并通过 ToTensor () 转换格式，同时配置批次大小与打乱等参数。
 ```
 batch_size =2048
 device = torch.device('cpu')
