@@ -39,15 +39,12 @@ test_loader = torch.utils.data.DataLoader(
     batch_size=batch_size,shuffle=True
 )
 ```
-> 代码中的一些参数解释：
+###### 代码中的一些参数解释：
+###### 'data'：数据集存储路径：将 MNIST 数据下载/读取到当前目录的 'data' 文件夹 
+###### train=True：指定为训练集：MNIST 分为训练集（60000 张图）和测试集（10000 张图），True 表示加载训练集
+###### transforms.Compose([...]) 是 PyTorch 的‘预处理流水线’，用于按顺序执行多个数据转换操作，这里只包含一个操作 transforms.ToTensor()
+###### transforms.ToTensor()：将 MNIST 原始的「图片格式」转换为 PyTorch 能处理的「张量（Tensor）格式」
 
-> 'data'：数据集存储路径：将 MNIST 数据下载/读取到当前目录的 'data' 文件夹 
-
-> train=True：指定为训练集：MNIST 分为训练集（60000 张图）和测试集（10000 张图），True 表示加载训练集
-
-> transforms.Compose([...]) 是 PyTorch 的‘预处理流水线’，用于按顺序执行多个数据转换操作，这里只包含一个操作 transforms.ToTensor()
-
-> transforms.ToTensor()：将 MNIST 原始的「图片格式」转换为 PyTorch 能处理的「张量（Tensor）格式」：
 ##
 ##### Finally check the original data dimensions through dataset attributes.
 ###### 最终可通过数据集属性查看原始数据维度。
@@ -57,18 +54,15 @@ train_loader.dataset.data.shape,
 ###### result: 
 ###### (torch.Size([60000, 28, 28]),)
 ##
-> 代码中的一些参数解释：
+###### 代码中的一些参数解释：
+###### train_loader.dataset：DataLoader 类有一个内置属性 dataset，专门用于返回它所绑定的「原始数据集实例」。
+###### dataset.data:datasets.MNIST 类（PyTorch 内置的数据集类）有一个专属属性 data，用于存储「原始图片数据」
+###### .shape:张量（Tensor）的内置属性，用于返回张量的「维度大小」，格式为 torch.Size([维度1, 维度2, ...])。
+###### 对 MNIST 训练集来说，shape 就是 torch.Size([60000, 28, 28])，对应：
+###### 60000：训练集样本总数（MNIST 训练集固定 60000 张图）
+###### 28：每张图片的高度（像素）
+###### 28：每张图片的宽度（像素）
 
-> train_loader.dataset：DataLoader 类有一个内置属性 dataset，专门用于返回它所绑定的「原始数据集实例」。
-
-> dataset.data:datasets.MNIST 类（PyTorch 内置的数据集类）有一个专属属性 data，用于存储「原始图片数据」
-
-> .shape:张量（Tensor）的内置属性，用于返回张量的「维度大小」，格式为 torch.Size([维度1, 维度2, ...])。
-
-> 对 MNIST 训练集来说，shape 就是 torch.Size([60000, 28, 28])，对应：
-> 60000：训练集样本总数（MNIST 训练集固定 60000 张图）
-> 28：每张图片的高度（像素）
-> 28：每张图片的宽度（像素）
 ##
 #### 2.2.MLP Model Definition and Training Component Initialization
 ##### Define a simple Multi-layer Perceptron(MLP) based on fully connected layers,including the network structure from input layer to hidden layer(784-->128) and hidden layer to output layer(128-->10), with ReLU activation function introducing non-lnearity.
@@ -94,11 +88,9 @@ class mlp(nn.Module):
         x2 = a2
         return x2
 ```
-> 代码中的一些参数解释：
-
-> 输入（展平的 MNIST 图片）→ 全连接层（784→128）→ ReLU 激活 → 全连接层（128→10）→ 输出（10 类预测分数）
-
-> 用形状表示：(batch_size, 784) → (batch_size, 128) → (batch_size, 128) → (batch_size, 10)
+###### 代码中的一些参数解释：
+###### 输入（展平的 MNIST 图片）→ 全连接层（784→128）→ ReLU 激活 → 全连接层（128→10）→ 输出（10 类预测分数）
+###### 用形状表示：(batch_size, 784) → (batch_size, 128) → (batch_size, 128) → (batch_size, 10)
 ##
 ##### 
 ```
@@ -110,13 +102,10 @@ model
 ###### mlp( (l1): Linear(in_features=784, out_features=128, bias=True)  
 ###### (l2): Linear(in_features=128, out_features=10, bias=True) )
 ##
-> 代码中的一些参数解释：
-
-> SGD 是「随机梯度下降（Stochastic Gradient Descent）」的缩写
-
-> nn.Module 类的内置方法，返回模型中「所有可训练参数的迭代器」—— 这里就是 self.l1 的权重（784×128）、偏置（128 维），以及 self.l2 的权重（128×10）、偏置（10 维）。
-
-> 核心作用：将模型参数「绑定」到优化器，让优化器知道要更新哪些参数。如果不绑定，优化器无法找到需要调整的变量，训练会无效。
+###### 代码中的一些参数解释：
+###### SGD 是「随机梯度下降（Stochastic Gradient Descent）」的缩写
+###### nn.Module 类的内置方法，返回模型中「所有可训练参数的迭代器」—— 这里就是 self.l1 的权重（784×128）、偏置（128 维），以及 self.l2 的权重（128×10）、偏置（10 维）。
+###### 核心作用：将模型参数「绑定」到优化器，让优化器知道要更新哪些参数。如果不绑定，优化器无法找到需要调整的变量，训练会无效。
 ##
 #### 2.3.MLP Model Trainning and Testing Process
 ##### Set 10 training epochs.In the training phase,load and flatten data in batches,optimize the model through gradient clearing,forward propagation,loss calculation,backpropagation,and parameter update. 
