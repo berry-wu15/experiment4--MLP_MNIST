@@ -9,3 +9,33 @@
 ##
 
 ## 2.Exprimental Content
+##### Construct an MLP model with input,hidden and output layers,use the SGD optimizer and cross-entropy loss function,and evaluate loss and accuracy on the test set after 10 training epochs.
+###### 构建含输入层、隐藏层和输出层的 MLP 模型，使用 SGD 优化器和交叉熵损失函数，经 10 轮训练后在测试集评估损失与准确率。
+##
+#### 2.1.MNIST Dataset Loading and Processing
+###### Import Pytorch and related tool libraries
+```
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+import torch.optim as optim
+import numpy as np
+import matplotlib.pyplot as plt
+from torchvision import datasets,transforms
+```
+##
+###### 
+```
+batch_size =2048
+device = torch.device('cpu')
+train_loader = torch.utils.data.DataLoader(
+    datasets.MNIST('data',train=True,download=True,transform=transforms.Compose([transforms.ToTensor(),])),
+    batch_size=batch_size,shuffle=True
+)
+test_loader = torch.utils.data.DataLoader(
+    datasets.MNIST('data',train=False,transform=transforms.Compose([transforms.ToTensor(),])),
+    batch_size=batch_size,shuffle=True
+)
+```
+##
+###### 
