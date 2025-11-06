@@ -52,7 +52,9 @@ test_loader = torch.utils.data.DataLoader(
 ```
 train_loader.dataset.data.shape,
 ```
-###### result : (torch.Size([60000, 28, 28]),)
+###### result: 
+###### (torch.Size([60000, 28, 28]),)
+##
 > 代码中的一些参数解释：
 
 > train_loader.dataset：DataLoader 类有一个内置属性 dataset，专门用于返回它所绑定的「原始数据集实例」。
@@ -107,6 +109,7 @@ model
 ###### (l1): Linear(in_features=784, out_features=128, bias=True)  
 ###### (l2): Linear(in_features=128, out_features=10, bias=True) 
 ###### )
+##
 > 代码中的一些参数解释：
 
 > SGD 是「随机梯度下降（Stochastic Gradient Descent）」的缩写
@@ -166,3 +169,4 @@ for epoch in range(epochs):
 ###### epoch:7,loss:0.3721,acc:0.8983
 ###### epoch:8,loss:0.3555,acc:0.9030
 ###### epoch:9,loss:0.3443,acc:0.9052
+##
