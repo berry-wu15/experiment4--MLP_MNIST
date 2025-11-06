@@ -53,5 +53,17 @@ test_loader = torch.utils.data.DataLoader(
 train_loader.dataset.data.shape,
 ```
 ###### result : (torch.Size([60000, 28, 28]),)
+> 代码中的一些参数解释：
+
+> train_loader.dataset：DataLoader 类有一个内置属性 dataset，专门用于返回它所绑定的「原始数据集实例」。
+
+> dataset.data:datasets.MNIST 类（PyTorch 内置的数据集类）有一个专属属性 data，用于存储「原始图片数据」
+
+> .shape:张量（Tensor）的内置属性，用于返回张量的「维度大小」，格式为 torch.Size([维度1, 维度2, ...])。
+
+> 对 MNIST 训练集来说，shape 就是 torch.Size([60000, 28, 28])，对应：
+> 60000：训练集样本总数（MNIST 训练集固定 60000 张图）
+> 28：每张图片的高度（像素）
+> 28：每张图片的宽度（像素）
 ##
 #### 2.2.
