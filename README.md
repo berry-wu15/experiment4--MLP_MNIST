@@ -40,8 +40,11 @@ test_loader = torch.utils.data.DataLoader(
 )
 ```
 > 代码中的一些参数解释：
+
 > 'data'：数据集存储路径：将 MNIST 数据下载/读取到当前目录的 'data' 文件夹 
+
 > train=True：指定为训练集：MNIST 分为训练集（60000 张图）和测试集（10000 张图），True 表示加载训练集
+
 > transforms.Compose([...]) 是 PyTorch 的「预处理流水线」，用于按顺序执行多个数据转换操作，这里只包含一个操作 transforms.ToTensor()
 ##
 ###### Finally check the original data dimensions through dataset attributes.
