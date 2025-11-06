@@ -118,9 +118,11 @@ model
 
 > 核心作用：将模型参数「绑定」到优化器，让优化器知道要更新哪些参数。如果不绑定，优化器无法找到需要调整的变量，训练会无效。
 ##
-#### 
-##### 
-###### 
+#### 2.3.MLP Model Trainning and Testing Process
+##### Set 10 training epochs.In the training phase,load and flatten data in batches,optimize the model through gradient clearing,forward propagation,loss calculation,backpropagation,and parameter update. 
+###### 设定 10 轮训练迭代，训练阶段按批次加载并展平数据，经梯度清零、前向传播、损失计算、反向传播及参数更新完成模型优化。
+##### In the testing phase,switch to evaluation mode and disable gradient computation to save resources.Obtain the average test loss and accuracy by accumulating losses and counting correct predictions,and output the model performance after each training epoch.
+###### 测试阶段切换至评估模式，禁用梯度计算以节省资源，通过累加损失、统计正确预测数得到平均测试损失与准确率，输出每轮训练后的模型性能。
 ```
 epochs = 10
 for epoch in range(epochs):
@@ -158,6 +160,9 @@ for epoch in range(epochs):
         acc =correct/len(test_loader.dataset) #计算测试准确率 
         print('epoch:{},loss:{:.4f},acc:{:.4f}'.format(epoch,test_loss,acc))
 ```
+##
+## 3.Experimental Reaults and Analysis
+######
 ###### result :
 ###### epoch:0,loss:1.4814,acc:0.7388
 ###### epoch:1,loss:0.8339,acc:0.8310
