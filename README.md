@@ -14,6 +14,7 @@
 ##
 #### 2.1.MNIST Dataset Loading and Processing
 ###### Import Pytorch and related tool libraries
+###### 导入 PyTorch 及相关工具库
 ```
 import torch
 import torch.nn as nn
@@ -39,4 +40,10 @@ test_loader = torch.utils.data.DataLoader(
 )
 ```
 ##
-###### 
+###### Finally check the original data dimensions through dataset attributes.
+###### 最终可通过数据集属性查看原始数据维度。
+```
+train_loader.dataset.data.shape,
+```
+result : (torch.Size([60000, 28, 28]),)
+
