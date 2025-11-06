@@ -45,7 +45,9 @@ test_loader = torch.utils.data.DataLoader(
 
 > train=True：指定为训练集：MNIST 分为训练集（60000 张图）和测试集（10000 张图），True 表示加载训练集
 
-> transforms.Compose([...]) 是 PyTorch 的「预处理流水线」，用于按顺序执行多个数据转换操作，这里只包含一个操作 transforms.ToTensor()
+> transforms.Compose([...]) 是 PyTorch 的‘预处理流水线’，用于按顺序执行多个数据转换操作，这里只包含一个操作 transforms.ToTensor()
+
+> transforms.ToTensor()：将 MNIST 原始的「图片格式」转换为 PyTorch 能处理的「张量（Tensor）格式」：
 ##
 ##### Finally check the original data dimensions through dataset attributes.
 ###### 最终可通过数据集属性查看原始数据维度。
