@@ -13,7 +13,7 @@
 ###### 构建含输入层、隐藏层和输出层的 MLP 模型，使用 SGD 优化器和交叉熵损失函数，经 10 轮训练后在测试集评估损失与准确率。
 ##
 #### 2.1.MNIST Dataset Loading and Processing
-##### Import Pytorch and related tool libraries
+##### （1）Import Pytorch and related tool libraries
 ###### 导入 PyTorch 及相关工具库
 ```
 import torch
@@ -24,8 +24,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 from torchvision import datasets,transforms
 ```
+
 ##
-##### Set the batch size and CPU computing device,define data loaders for the training and test sets,automatically download/read the MNIST dataset and convert its format via ToTensor(),configure batch size and shuffling parameters.
+##### （2）Set the batch size and CPU computing device,define data loaders for the training and test sets,automatically download/read the MNIST dataset and convert its format via ToTensor(),configure batch size and shuffling parameters.
 ###### 设置批次大小与 CPU 计算设备，定义训练集和测试集的数据加载器，自动下载 / 读取 MNIST 数据集并通过 ToTensor () 转换格式，同时配置批次大小与打乱等参数。
 ```
 batch_size =2048
@@ -46,7 +47,7 @@ test_loader = torch.utils.data.DataLoader(
 ###### transforms.ToTensor()：将 MNIST 原始的「图片格式」转换为 PyTorch 能处理的「张量（Tensor）格式」
 
 ##
-##### Finally check the original data dimensions through dataset attributes.
+##### （3）Finally check the original data dimensions through dataset attributes.
 ###### 最终可通过数据集属性查看原始数据维度。
 ```
 train_loader.dataset.data.shape,
@@ -65,7 +66,7 @@ train_loader.dataset.data.shape,
 
 ##
 #### 2.2.MLP Model Definition and Training Component Initialization
-##### Define a simple Multi-layer Perceptron(MLP) based on fully connected layers,including the network structure from input layer to hidden layer(784-->128) and hidden layer to output layer(128-->10), with ReLU activation function introducing non-lnearity.
+##### （1）Define a simple Multi-layer Perceptron(MLP) based on fully connected layers,including the network structure from input layer to hidden layer(784-->128) and hidden layer to output layer(128-->10), with ReLU activation function introducing non-lnearity.
 ###### 定义基于全连接层的简单多层感知机（MLP），包含输入层到隐藏层（784→128）、隐藏层到输出层（128→10）的网络结构，通过 ReLU 激活函数引入非线性。
 ```
 #简单的多层感知机（MLP，也叫人工神经网络）
@@ -92,7 +93,7 @@ class mlp(nn.Module):
 ###### 输入（展平的 MNIST 图片）→ 全连接层（784→128）→ ReLU 激活 → 全连接层（128→10）→ 输出（10 类预测分数）
 ###### 用形状表示：(batch_size, 784) → (batch_size, 128) → (batch_size, 128) → (batch_size, 10)
 ##
-##### 
+##### （2）创建模型实例并指定计算设备，初始化 SGD 优化器并绑定模型可训练参数。
 ```
 model = mlp().to(device)   #创建模型实例并指定计算设备
 optimizer = optim.SGD(model.parameters(),lr=0.1)
