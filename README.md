@@ -105,10 +105,8 @@ optimizer = optim.SGD(model.parameters(),lr=0.1)
 model
 ```
 ###### result : 
-###### mlp(
-###### (l1): Linear(in_features=784, out_features=128, bias=True)  
-###### (l2): Linear(in_features=128, out_features=10, bias=True) 
-###### )
+###### mlp( (l1): Linear(in_features=784, out_features=128, bias=True)  
+###### (l2): Linear(in_features=128, out_features=10, bias=True) )
 ##
 > 代码中的一些参数解释：
 
@@ -177,3 +175,9 @@ for epoch in range(epochs):
 ###### epoch:9,loss:0.3443,acc:0.9052
 ##
 ## 4.Experimental Summary
+#### (1)Model Learning:Mastered the core structure and working principle of Multi-Layer Perceotron(MLP),understood the functions of fully connected layers and ReLU activation function,and verified the effectiveness of a simple MLP in image classification tasks.
+###### 模型上：掌握了多层感知机（MLP）的核心结构与工作原理，理解全连接层、ReLU 激活函数的作用，验证了简单 MLP 在图像分类任务中的有效性。
+#### (2)Code Learning:Proficiently used PyTorch to implement data loading,model defintion,loss calculation and optimizer configuration,and mastered core progamming skills such as tensor operations,device migration,and gradient control.
+###### 代码上：熟练运用 PyTorch 实现数据加载、模型定义、损失计算与优化器配置，掌握张量操作、设备迁移、梯度控制等核心编程技巧。
+#### (3)Overall Process Learning:Clarified the complete workflow of deep learning classification tasks,forming a standardized experimental thinking from dataset preprocessing,model construction,training optimization to performance evaluation. 
+###### 总体流程上：理清了深度学习分类任务的完整流程，从数据集预处理、模型搭建、训练优化到性能评估，形成标准化实验思维。
